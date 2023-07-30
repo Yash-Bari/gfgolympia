@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Olympic Web Apps Template</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url("https://source.unsplash.com/featured/?stars");
+      background-size: unset;
+      background-position: center;
+    }
+    
+    .header-overlay {
+      position: calc();
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      text-align: center;
+      transform-style: preserve-3d;
+    }
+
+    .header-title {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      transform: translateZ(20px);
+    }
+
+    .header-subtitle {
+      font-size: 18px;
+      margin-bottom: 40px;
+      transform: translateZ(20px);
+    }
+    .slider-container {
+      width: max-width;
+      margin: 0 auto;
+      padding: 50px;
+      overflow: hidden;
+    }
+
+    .slider {
+      display: flex;
+      animation: scrollRightToLeft 40s linear infinite;
+    }
+
+    @keyframes scrollRightToLeft {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(calc(-100% - 20px)); /* 20px is the margin between cards */
+      }
+    }
+
+    .slide {
+      width: max-width;
+      height: 420px;
+      margin-right: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      background-size: cover;
+      background-image: url("https://source.unsplash.com/featured/?Running Track");
+      background-position: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      transform-origin: center;
+      transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .slide-content {
+      padding: 20px;
+      transition: opacity 0.3s ease;
+      opacity: 0.8;
+    }
+
+    .slide-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .slide-description {
+      font-size: 14px;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .slide-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .slide-buttons a,
+    .slide-buttons button {
+      text-decoration: none;
+      background-color: #0d0d0e;
+      color: #ffffff;
+      padding: 5px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .slide-buttons a:hover,
+    .slide-buttons button:hover {
+      background-color: #0057b365;
+    }
+
+    .slide:hover {
+      transform: scale(1.05);
+    }
+
+    .slide:hover img {
+      transform: scale(1.1) translateY(10px);
+    }
+
+    .slide:hover .slide-content {
+      opacity: 1;
+    }
+
+
+    .parallax-container {
+      display: flex;
+      margin: 100px auto;
+      max-width: 960px;
+      perspective: 1000px;
+    }
+
+    .parallax-image {
+      width: 40%;
+      overflow: hidden;
+      transform: translateZ(-30px);
+    }
+
+    .parallax-image img {
+      width: 100%;
+      height: auto;
+      transform-origin: top center;
+      transition: transform 0.5s ease;
+    }
+
+    .parallax-content {
+      width: 60%;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transform: translateZ(0);
+      transition: transform 0.5s ease;
+    }
+
+    .parallax-container:hover .parallax-image img {
+      transform: scale(1.1) translateY(20px);
+    }
+
+    .parallax-container:hover .parallax-content {
+      transform: translateZ(20px);
+    }
+
+   
+    .parallax-title {
+      font-size: 28px;
+      font-weight: bold;
+      color: #000000;
+      margin-bottom: 20px;
+    }
+
+    .parallax-description {
+      font-size: 16px;
+      color: #000000;
+      margin-bottom: 30px;
+    }
+
+    .parallax-buttons {
+      display: flex;
+      justify-content: center;
+    }
+
+    .parallax-buttons a {
+      margin: 0 10px;
+      padding: 10px 20px;
+      text-decoration: none;
+      background-color: #007bff;
+      color: #ffffff;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .parallax-buttons a:hover {
+      background-color: #0057b306;
+    }
+  </style>
+</head>
+<body>
+  <div style="background-color: #031221; color: #ffffff; padding: 5px; text-align: center;">
+    <img src="https://th.bing.com/th/id/OIP.W8FzzgXIKTGjKmHFYkdYnAAAAA?w=176&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="MyOlympia Logo" style="width: 100px; height: 100px; border-radius: 20%;">
+    <h1 style="font-size: 36px; margin-top: 10px;">MyOlympia</h1>
+  </div>
+  <div class="header-overlay">
+    <h1 class="header-title">Explore the Olympic Web Apps</h1>
+    <p class="header-subtitle">Interactive and Exciting Experience Awaits!</p>
+  </div>
+
+
+  <div class="slider-container">
+    <div class="slider">
+    </div>
+  </div>
+  <hr>
+
+  <div class="parallax-container">
+    <div class="parallax-image">
+      <img src="https://source.unsplash.com/featured/?sustainability" alt="Sustainability Image">
+    </div>
+    <div class="parallax-content">
+      <h2 class="parallax-title">Sustainability</h2>
+      <p class="parallax-description">Welcome to "Sustainability," the cutting-edge web application that brings environmental consciousness to the forefront! With a sleek and intuitive interface, this platform elegantly presents a table showcasing the Name, Location, Sustainability Facilities, and Sustainability Score of various establishments. Imagine a world where you can effortlessly explore and compare the eco-friendly initiatives of your Olympic event. Delve into the data-driven insights, witnessing the positive impact each establishment makes on our planet. Let "Sustainability" be your go-to destination, empowering you to make informed choices and support the Olympic event driving us towards a greener and brighter future.</p>
+      <div class="parallax-buttons">
+        <a href="http://olympicvenue.pythonanywhere.com/" target="_blank">View Web App</a>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <div class="parallax-container">
+    <div class="parallax-image">
+      <img src="https://source.unsplash.com/featured/?thread" alt="Thread Image">
+    </div>
+    <div class="parallax-content">
+      <h2 class="parallax-title">Thread</h2>
+      <p class="parallax-description">Introducing "Thread," the next-generation web app that takes microblogging to exhilarating heights! Thread offers an immersive and seamless experience, akin to its predecessor Insta Thread, but with a twist of innovation. Unleash your thoughts and ideas through concise messages in true "Post" style while embarking on limitless threading possibilities. Connect with like-minded individuals, create engaging conversations, and effortlessly express yourself with a user-friendly interface that enhances your journey through this virtual world of connectivity. Whether it's sparking a viral thread or engaging in insightful discussions, Thread is your gateway to a global community where your voice resonates louder than ever before!.</p>
+      <div class="parallax-buttons">
+        <a href="http://olympicthread.pythonanywhere.com/" target="_blank">View Web App</a>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <div class="parallax-container">
+    <div class="parallax-image">
+      <img src="https://source.unsplash.com/featured/?athlete" alt="Athlete Image">
+    </div>
+    <div class="parallax-content">
+      <h2 class="parallax-title">Athlete</h2>
+      <p class="parallax-description">Welcome to "Athlete," the ultimate web app dedicated to celebrating the inspiring stories of remarkable sports stars! Immerse yourself in the world of athletic greatness as you explore a treasure trove of athlete profiles, each encompassing their name, biography, and awe-inspiring Olympic results. Uncover the challenges they've conquered, the dreams they've pursued, and the records they've set on the grandest stage of all. With captivating narratives and stunning visuals, "Athlete" will leave you in awe of the dedication and passion that drive these extraordinary individuals to push their boundaries. Get ready to cheer on your favorite Olympians and be inspired by their extraordinary feats, all in one accessible and beautifully designed platform - "Athlete."</p>
+      <div class="parallax-buttons">
+        <a href="https://athletepy-rnyzdzi01r.streamlit.app/" target="_blank">View Web App</a>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+<div class="parallax-container">
+    <div class="parallax-image">
+      <img src="https://source.unsplash.com/featured/?sports" alt="Sports Image">
+    </div>
+    <div class="parallax-content">
+      <h2 class="parallax-title">Sports</h2>
+      <p class="parallax-description">Sports is an all-in-one web app that offers detailed information about Olympic sports. Explore an extensive database of sports, including rules, equipment, and historical data. The unique voice translator feature allows users to translate sports information into any language, promoting inclusivity and accessibility. Engage with captivating visuals and stay updated with real-time Olympic news and event schedules. Whether you're a passionate sports enthusiast or a curious observer, SportsSphere provides an immersive experience into the exciting world of Olympic sports."</p>
+      <div class="parallax-buttons">
+        <a href="https://sportspy-0j2uoed110mm.streamlit.app/" target="_blank">View Web App</a>
+      </div>
+    </div>
+  </div>
+  <hr>
+  
+
+<div class="parallax-container">
+    <div class="parallax-image">
+      <img src="https://source.unsplash.com/featured/?virtual assistant" alt="Vistual assistant">
+    </div>
+    <div class="parallax-content">
+      <h2 class="parallax-title">InfoAssist</h2>
+      <p class="parallax-description">InfoAssist is an intelligent web assistant designed to provide instant access to vast knowledge from Wikipedia. Simply input your query, and InfoAssist will fetch relevant information from Wikipedia's extensive database, offering comprehensive answers to your questions. With the added voice translator feature, users can seamlessly convert the retrieved information into any language of their choice, breaking language barriers and making knowledge accessible to a global audience. Whether you seek to learn, research, or explore, InfoAssist empowers users with a powerful and inclusive tool for obtaining accurate information from Wikipedia in a user-friendly and multilingual format."</p>
+      <div class="parallax-buttons">
+        <a href="https://assistantpy-tdzgvtcywbnol2mzytcgxq.streamlit.app/" target="_blank">View Web App</a>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <div class="parallax-container">
+    <div class="parallax-image">
+      <img src="https://source.unsplash.com/featured/?olympicGames" alt="Medal Game Image">
+    </div>
+    <div class="parallax-content">
+      <h2 class="parallax-title">Medal Game</h2>
+      <p class="parallax-description">Welcome to "Medal & Game," your ultimate destination for Olympic Medal & Game history data analysis! Immerse yourself in the awe-inspiring legacy of the Games as you explore a treasure trove of historical data and statistics from past Olympics. With interactive visualizations and intuitive filters, uncover the triumphs, rivalries, and unforgettable moments that have shaped sporting history. From the most decorated athletes to the dominant nations, Medal & Game presents a comprehensive analysis of Olympic excellence, fueling your passion for sports and national pride. Join us on this exhilarating journey through time, celebrating the spirit of competition and the pursuit of athletic greatness on the grandest stage of them all!</p>
+      <div class="parallax-buttons">
+        <a href="https://medalgamepy-x8tldz7ux7d.streamlit.app/" target="_blank">View Web App</a>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <div class="parallax-container">
+    <div class="parallax-image">
+      <img src="https://source.unsplash.com/featured/?game" alt="Game Image">
+    </div>
+    <div class="parallax-content">
+      <h2 class="parallax-title">Game</h2>
+      <p class="parallax-description">Dive into the captivating world of "Game," the ultimate web app that unravels the rich tapestry of Olympic Games history through powerful data analysis! Immerse yourself in a treasure trove of information spanning decades of athletic excellence, triumphs, and records. From the first modern Olympics to the present day, "Game" presents a visually stunning and intuitive interface that showcases detailed statistics, medal counts, and iconic moments, bringing the past to life like never before. Unearth intriguing patterns and trends, gain insights into the evolution of sports, and celebrate the achievements of legendary athletes who have left an indelible mark on the global stage. "Game" empowers sports enthusiasts, historians, and curious minds alike to explore the legacy of the Olympics and bask in the spirit of unity and competition that defines this extraordinary event..</p>
+      <div class="parallax-buttons">
+        <a href="https://gamepy-f7ql1ufnptk.streamlit.app/" target="_blank">View Web App</a>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <div class="parallax-container">
+    <div class="parallax-image">
+      <img src="https://source.unsplash.com/featured/?medal" alt="Medal Image">
+    </div>
+    <div class="parallax-content">
+      <h2 class="parallax-title">Medal</h2>
+      <p class="parallax-description">Step into the virtual arena of "Medal," your ultimate portal to Olympic Medal history data analysis! Immerse yourself in the rich legacy of the Medal with captivating visuals and interactive charts. From the first modern Olympics to the most recent triumphs, Medal presents a comprehensive overview of medal counts, trends, and standout performances across nations and disciplines. Delve into the past and witness the evolution of sporting dominance through the years. Unearth fascinating insights, from the most decorated athletes to the rise and fall of sporting superpowers, as Medal empowers you to relive the excitement of the Olympics like never before. So, lace up your virtual sneakers and embark on an enlightening journey through the triumphant moments of Olympic history!</p>
+      <div class="parallax-buttons">
+        <a href="https://medalpy-527l3lk225b.streamlit.app/" target="_blank">View Web App</a>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  
+
+  <script>
+    const slidesData = [
+      {
+        title: "Sustainability",
+        description: "Explore the Sustainability web app.",
+        imageUrl: "https://source.unsplash.com/featured/?sustainability",
+        url: "http://olympicvenue.pythonanywhere.com/"
+      },
+      {
+        title: "Thread",
+        description: "Discover the Thread web app.",
+        imageUrl: "https://source.unsplash.com/featured/?thread",
+        url: "http://olympicthread.pythonanywhere.com/"
+      },
+      {
+        title: "Athlete",
+        description: "Check out the Athlete web app.",
+        imageUrl: "https://source.unsplash.com/featured/?athlete",
+        url: "https://athletepy-rnyzdzi01r.streamlit.app/"
+      },
+      {
+        title: "Sports",
+        description: "Explore the Sports web app.",
+        imageUrl: "https://source.unsplash.com/featured/?sports",
+        url: "https://sportspy-0j2uoed110mm.streamlit.app/"
+      },
+      {
+        title: "InfoAssist",
+        description: "Discover the InfoAssist web app.",
+        imageUrl: "https://source.unsplash.com/featured/?virtual assistant",
+        url: "https://assistantpy-tdzgvtcywbnol2mzytcgxq.streamlit.app/"
+      },
+      {
+        title: "Data Driven",
+        description: "Explore Data Driven web apps.",
+        imageUrl: "https://source.unsplash.com/featured/?data analysis",
+        apps: [
+          {
+            name: "Game",
+            description: "Play the Game web app.",
+            url: "https://gamepy-f7ql1ufnptk.streamlit.app/"
+          },
+          {
+            name: "Medal",
+            description: "Discover the Medal web app.",
+            url: "https://medalpy-527l3lk225b.streamlit.app/"
+          },
+          {
+            name: "Medal Game",
+            description: "Play the Medal Game web app.",
+            url: "https://medalgamepy-x8tldz7ux7d.streamlit.app/"
+          }
+        ]
+      },
+    ];
+
+    const slider = document.querySelector(".slider");
+    let currentPosition = 0;
+
+    function createSlide(data) {
+      const slide = document.createElement("div");
+      slide.classList.add("slide");
+
+      const img = document.createElement("img");
+      img.src = data.imageUrl;
+      slide.appendChild(img);
+
+      const slideContent = document.createElement("div");
+      slideContent.classList.add("slide-content");
+
+      const title = document.createElement("h2");
+      title.classList.add("slide-title");
+      title.textContent = data.title;
+      slideContent.appendChild(title);
+
+      const description = document.createElement("p");
+      description.classList.add("slide-description");
+      description.textContent = data.description;
+      slideContent.appendChild(description);
+
+      const buttons = document.createElement("div");
+      buttons.classList.add("slide-buttons");
+
+      if (data.apps) {
+        data.apps.forEach(app => {
+          const appButton = document.createElement("a");
+          appButton.href = app.url;
+          appButton.textContent = app.name;
+          buttons.appendChild(appButton);
+        });
+      } else {
+        const viewButton = document.createElement("a");
+        viewButton.href = data.url;
+        viewButton.textContent = "View Web App";
+        buttons.appendChild(viewButton);
+      }
+
+      slideContent.appendChild(buttons);
+      slide.appendChild(slideContent);
+      return slide;
+    }
+
+    function showSlide(index) {
+      if (index >= 0 && index < slidesData.length) {
+        currentPosition = index;
+        const translateXValue = -currentPosition * (320 + 20);
+        slider.style.transform = `translateX(${translateXValue}px)`;
+
+        const slides = document.querySelectorAll(".slide");
+        slides.forEach((slide, idx) => {
+          slide.style.width = (idx === currentPosition) ? "380px" : "300px";
+        });
+      }
+    }
+
+    function initSlider() {
+      const slides = slidesData.map(createSlide);
+      slides.forEach(slide => slider.appendChild(slide));
+    }
+
+    initSlider();
+const webAppLinks = document.querySelectorAll(".parallax-buttons a");
+    webAppLinks.forEach(link => {
+      link.addEventListener("click", event => {
+        event.preventDefault();
+        const url = link.getAttribute("href");
+        window.location.href = url;
+      });
+    });
+  </script>
+</body>
+</html>
